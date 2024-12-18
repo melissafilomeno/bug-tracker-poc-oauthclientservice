@@ -1,0 +1,88 @@
+openapi: "3.0.0"
+info:
+  title: Bugs API
+  description: API for managing Bugs
+  version: 1.0.0
+
+paths:
+  /bugs:
+    get:
+      summary: Return the list of all bugs
+      description: Retrieves the list of all bugs
+      operationId: findAllBugs
+      responses:
+        "200": 
+          description: Returns a JSON array of bugs
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Bug"
+    post:
+      tags: 
+        - Bugs
+      summary: Create a new Bug
+      requestBody:
+        description: Creates a new Bug
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Bug"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Bug"
+  /bugs/{bugId}:
+    get:
+      tags:
+        - Bugs
+      summary: Return the bug details
+      description: Retrieve the bug details
+      operationId: findBugById
+      parameters:
+        - name: bugId
+          in: path
+          description: Bug ID
+          required: true
+          schema:
+            $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          description: Returns the details of the bug
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Bug"
+        "404":
+          description: Bug was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    UUID:
+      type: string
+      pattern: '^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$'
+    Bug:
+      type: object
+      properties:
+        id: 
+          $ref: "#/components/schemas/UUID"
+        description:
+          type: string
+          minLength: 1
+          maxLength: 40
+          x-field-extra-annotation: "@jakarta.validation.constraints.NotBlank"
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
