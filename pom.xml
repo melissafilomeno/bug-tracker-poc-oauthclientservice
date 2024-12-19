@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<spring-webmvc.version>6.2.1</spring-webmvc.version>
 		<lombok-version>1.18.36</lombok-version>
 		<swagger-annotations-version>2.0.0-rc2</swagger-annotations-version>
 		<jersey-version>4.0.0-M1</jersey-version>
@@ -42,6 +43,7 @@
 		<swagger-annotations-v3.version>2.2.25</swagger-annotations-v3.version>
 		<swagger-ui.version>5.18.2</swagger-ui.version>
 
+
 		<openapi-generator-version>7.10.0</openapi-generator-version>
 	</properties>
 	<dependencies>
@@ -52,6 +54,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-webmvc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-webmvc.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -212,7 +225,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.myorg.bugTrackerPoc.OauthclientserviceApplication</mainClass>
+					<mainClass>com.myorg.bugTrackerPoc.OAuthClientServiceApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
