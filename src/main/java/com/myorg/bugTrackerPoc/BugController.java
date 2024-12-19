@@ -1,5 +1,7 @@
 package com.myorg.bugTrackerPoc;
 
+import com.myorg.bugTrackerPoc.openapi.client.model.Bug;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
@@ -16,10 +18,11 @@ public class BugController {
     }
 
     @GetMapping("/")
-    public List getBugs(){
+    public List<Bug> getBugs(){
         return restClient.get()
                 .uri("http://localhost:9090/bugs")
                 .retrieve()
-                .toEntity(List.class).getBody();
+                .toEntity(new ParameterizedTypeReference<List<Bug>>() {})
+                .getBody();
     }
 }
