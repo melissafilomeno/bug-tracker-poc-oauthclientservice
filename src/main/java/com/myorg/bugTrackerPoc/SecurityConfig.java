@@ -6,9 +6,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction;
+import org.springframework.security.oauth2.client.web.client.OAuth2ClientHttpRequestInterceptor;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestClient;
 
 @EnableWebSecurity
 @Configuration
@@ -41,13 +41,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    WebClient webClient(OAuth2AuthorizedClientManager authorizedClientManager){
-        var oauth2Client = new ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
+    RestClient restClient(RestClient.Builder builder, OAuth2AuthorizedClientManager authorizedClientManager){
+        OAuth2ClientHttpRequestInterceptor requestInterceptor =
+                new OAuth2ClientHttpRequestInterceptor(authorizedClientManager);
 
-        oauth2Client.setDefaultClientRegistrationId("keycloak");
-        return WebClient.builder()
-                .apply(oauth2Client.oauth2Configuration())
-                .build();
+        return builder.requestInterceptor(requestInterceptor).build();
     }
 }
-
