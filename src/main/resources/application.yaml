@@ -19,3 +19,4 @@ spring:
         provider:
           keycloak:
             token-uri: http://localhost:8081/realms/pluralsight/protocol/openid-connect/token
+get-bugs-uri: http://localhost:9090/bugs

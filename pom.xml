@@ -42,7 +42,20 @@
 		<swagger-core-v3.version>2.2.25</swagger-core-v3.version>
 		<swagger-annotations-v3.version>2.2.25</swagger-annotations-v3.version>
 		<swagger-ui.version>5.18.2</swagger-ui.version>
-
+		<junit-jupiter.version>5.11.4</junit-jupiter.version>
+		<mockk.version>1.13.13</mockk.version>
+		<assertj-core.version>3.26.3</assertj-core.version>
+		<wiremock.version>3.10.0</wiremock.version>
+		<commons-io.verison>2.18.0</commons-io.verison>
+		<wiremock-testcontainers-module.version>1.0-alpha-14</wiremock-testcontainers-module.version>
+		<testcontainers-testcontainers.version>1.20.4</testcontainers-testcontainers.version>
+		<commons-compress.version>1.27.1</commons-compress.version>
+		<testcontainers-junit-jupiter.version>1.20.4</testcontainers-junit-jupiter.version>
+		<rest-assured.version>5.5.0</rest-assured.version>
+		<json-path.version>2.9.0</json-path.version>
+		<json-schema-validator.version>5.5.0</json-schema-validator.version>
+		<spring-mock-mvc.version>5.5.0</spring-mock-mvc.version>
+		<spring-web-test-client.version>5.5.0</spring-web-test-client.version>
 
 		<openapi-generator-version>7.10.0</openapi-generator-version>
 	</properties>
@@ -216,6 +229,94 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>swagger-ui</artifactId>
 			<version>${swagger-ui.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+			<version>${mockk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.wiremock</groupId>
+			<artifactId>wiremock</artifactId>
+			<version>${wiremock.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-io</groupId>
+					<artifactId>commons-io</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.verison}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.wiremock.integrations.testcontainers</groupId>
+			<artifactId>wiremock-testcontainers-module</artifactId>
+			<version>${wiremock-testcontainers-module.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>${testcontainers-testcontainers.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-compress</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>${commons-compress.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${testcontainers-junit-jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured-all</artifactId>
+			<version>${rest-assured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${json-path.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>${json-schema-validator.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<version>${spring-mock-mvc.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-web-test-client</artifactId>
+			<version>${spring-web-test-client.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

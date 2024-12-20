@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"id\": \"2b1979d2-f24c-4cac-8b71-93734ec25a7d\", \"description\": \"This is my first bug\"}]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

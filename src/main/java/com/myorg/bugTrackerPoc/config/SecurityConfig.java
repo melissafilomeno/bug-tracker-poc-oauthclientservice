@@ -1,4 +1,4 @@
-package com.myorg.bugTrackerPoc;
+package com.myorg.bugTrackerPoc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
