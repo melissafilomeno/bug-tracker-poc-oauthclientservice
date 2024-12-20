@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Get First Bug",
+			"name": "Get All Bugs",
 			"event": [
 				{
 					"listen": "test",
@@ -15,14 +15,6 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"Contains a new UUID\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.not.eql(null);\r",
-							"});\r",
-							"pm.test(\"Contains same description as input\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.description).to.not.eql(null);\r",
 							"});"
 						],
 						"type": "text/javascript",
